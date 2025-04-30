@@ -11,9 +11,11 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "padding_top": 24,
+        "padding_bottom": 0
       }
     },
     "rich_text_xchHyt": {
@@ -22,20 +24,20 @@
         "heading_E3MaQJ": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand",
+            "heading": "Elemets",
             "heading_size": "h1"
           }
         },
         "text_LTa9ge": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+            "text": "<p>This page displays the sections I have created or updated.</p>"
           }
         },
         "button_ci4bfR": {
           "type": "button",
           "settings": {
-            "button_label": "Button label",
+            "button_label": "",
             "button_link": "",
             "button_style_secondary": false,
             "button_label_2": "",
@@ -52,6 +54,49 @@
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 40
+      }
+    },
+    "rich_text_9rGWb6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_4HbJh9": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_CWz9h7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>There are no sections created yet.</p>"
+          }
+        },
+        "button_GngnMW": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_4HbJh9",
+        "text_CWz9h7",
+        "button_GngnMW"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "",
         "full_width": true,
@@ -62,6 +107,7 @@
   },
   "order": [
     "main",
-    "rich_text_xchHyt"
+    "rich_text_xchHyt",
+    "rich_text_9rGWb6"
   ]
 }
