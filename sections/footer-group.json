@@ -15,7 +15,7 @@
       "type": "footer",
       "settings": {
         "color_scheme": "scheme-0bbc0532-3e31-46cb-8583-2afacf7522bd",
-        "newsletter_enable": true,
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,
         "show_social": true,
