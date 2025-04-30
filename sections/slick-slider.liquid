@@ -1,0 +1,65 @@
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'jquery-3.7.1.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+
+{% if section.blocks.size > 0 %}
+  <div class="product-custom-slider"> 
+    <div class="product-custom-slider__container">
+      <div class="product-custom-slider__text">
+        <h2 class="product-custom-slider__title">
+          Slider Title
+        </h2>
+        <p class="product-custom-slider__subtitle">
+          Slider Subtitle
+        </p>
+      </div>
+  
+      <div class="product-custom-slider__slider">
+        {% for block in section.blocks %}
+          {% if block.settings.product %}
+            {% assign product = block.settings.product %}
+            <div class="product-custom-slider__item">
+              <h3>{{ product.title }} </h3>
+            </div>
+          {% endif %}
+        {% endfor %}  
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+<script>
+  document.addEventListener('DomContentLoaded', function() {
+    $('#shopify-section-{{section.id}} .product-custom-slider__slider').slick();
+  })
+</script>
+
+
+{% schema %}
+{
+  "name": "Slick Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Slick Product"
+        }
+      ] 
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slick Slider"
+    }
+  ]
+}
+{% endschema %}
