@@ -17,34 +17,23 @@
         "padding_bottom": 36
       }
     },
-    "form": {
-      "type": "contact-form",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "rich_text_KG7Rpt": {
+    "rich_text_eEUTFN": {
       "type": "rich-text",
       "blocks": {
-        "heading_Wxgi6R": {
+        "heading_77tCUG": {
           "type": "heading",
           "settings": {
-            "heading": "About me",
+            "heading": "About Me",
             "heading_size": "h1"
           }
         },
-        "text_jHw8XX": {
+        "text_txJbaB": {
           "type": "text",
           "settings": {
             "text": "<p>All the necessary information regarding my experience is in the PDF file. To download, click the 'Download my resume' button. Thank you.</p>"
           }
         },
-        "button_3xmhne": {
+        "button_3Ft8AT": {
           "type": "button",
           "settings": {
             "button_label": "Download my resume",
@@ -57,16 +46,16 @@
         }
       },
       "block_order": [
-        "heading_Wxgi6R",
-        "text_jHw8XX",
-        "button_3xmhne"
+        "heading_77tCUG",
+        "text_txJbaB",
+        "button_3Ft8AT"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "left",
         "content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "full_width": false,
+        "color_scheme": "scheme-2",
+        "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
       }
@@ -74,7 +63,6 @@
   },
   "order": [
     "main",
-    "form",
-    "rich_text_KG7Rpt"
+    "rich_text_eEUTFN"
   ]
 }

@@ -115,7 +115,7 @@
         "button_weFWtF": {
           "type": "button",
           "settings": {
-            "button_label": "View",
+            "button_label": "View More",
             "button_link": "shopify://pages/products",
             "button_style_secondary": false
           }
