@@ -103,11 +103,56 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "slick_slider_bfJUzg": {
+      "type": "slick-slider",
+      "blocks": {
+        "product_3THtkH": {
+          "type": "product",
+          "settings": {
+            "product": "example-hat"
+          }
+        },
+        "product_iEMhKY": {
+          "type": "product",
+          "settings": {
+            "product": "example-pants"
+          }
+        },
+        "product_PxrkUA": {
+          "type": "product",
+          "settings": {
+            "product": "example-shirt"
+          }
+        },
+        "product_8cVzK7": {
+          "type": "product",
+          "settings": {
+            "product": "example-beanie-copy"
+          }
+        },
+        "product_WL6RtK": {
+          "type": "product",
+          "settings": {
+            "product": "example-t-shirt-copy"
+          }
+        }
+      },
+      "block_order": [
+        "product_3THtkH",
+        "product_iEMhKY",
+        "product_PxrkUA",
+        "product_8cVzK7",
+        "product_WL6RtK"
+      ],
+      "name": "Slick Slider",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "rich_text_xchHyt",
-    "rich_text_9rGWb6"
+    "rich_text_9rGWb6",
+    "slick_slider_bfJUzg"
   ]
 }

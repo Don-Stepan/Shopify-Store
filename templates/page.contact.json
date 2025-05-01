@@ -11,24 +11,58 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "form": {
-      "type": "contact-form",
+    "rich_text_eEUTFN": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_77tCUG": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Me",
+            "heading_size": "h1"
+          }
+        },
+        "text_txJbaB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>All the necessary information regarding my experience is in the PDF file. To download, click the 'Download my resume' button. Thank you.</p>"
+          }
+        },
+        "button_3Ft8AT": {
+          "type": "button",
+          "settings": {
+            "button_label": "Download my resume",
+            "button_link": "https://cdn.shopify.com/s/files/1/0740/7229/3607/files/Stepan-Rozhko-Resume.pdf?v=1746011552",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_77tCUG",
+        "text_txJbaB",
+        "button_3Ft8AT"
+      ],
+      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     }
   },
   "order": [
     "main",
-    "form"
+    "rich_text_eEUTFN"
   ]
 }
