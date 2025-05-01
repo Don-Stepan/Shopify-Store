@@ -3,62 +3,150 @@
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
 
 {% if section.blocks.size > 0 %}
-  <div class="product-custom-slider"> 
+  <div class="product-custom-slider">
     <div class="product-custom-slider__container">
       <div class="product-custom-slider__text">
         <h2 class="product-custom-slider__title">
-          Slider Title
+          {{ section.settings.slick_slider_title }}
         </h2>
         <p class="product-custom-slider__subtitle">
-          Slider Subtitle
+          {{ section.settings.slick_slider_subtitle }}
         </p>
       </div>
-  
+
       <div class="product-custom-slider__slider">
         {% for block in section.blocks %}
-          {% if block.settings.product %}
+          {% if block.settings.product != blank %}
             {% assign product = block.settings.product %}
             <div class="product-custom-slider__item">
-              <h3>{{ product.title }} </h3>
+              <a href="{{product.url}}">
+                <img src="{{product.featured_image | image_url: width: 300}}" alt="{{product.featured_image.alt | default: product.title }}">
+                <h3>{{ product.title }}</h3>
+                <p class="text">{{ product.description | truncate: 100, '...' }}</p>
+                <p class="price">{{ product.price | money }}</p>
+              </a>
             </div>
           {% endif %}
-        {% endfor %}  
+        {% endfor %}
       </div>
     </div>
   </div>
 {% endif %}
 
+
 <script>
-  $(document).ready(function() {
-    $('#shopify-section-{{ section.id }} .product-custom-slider__slider').slick();
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.jQuery) {
+      $('#shopify-section-{{ section.id }} .product-custom-slider__slider').slick({
+        dots: {{section.settings.show_slider_dots}},
+        infinite: {{section.settings.slider_infinite}},
+        speed: 400,
+        slidesToShow: {{ section.settings.slider_items_desktop }},
+        slidesToScroll: {{section.settings.slides_to_scroll}},
+        autoplay: {{section.settings.slider_autoplay}},
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: {{section.settings.slider_items_mobile}}
+            }
+          }
+        ]
+      });
+    }
   });
 </script>
 
 
 {% schema %}
-{
-  "name": "Slick Slider",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Slick Product"
-        }
-      ] 
-    }
-  ],
-  "presets": [
-    {
-      "name": "Slick Slider"
-    }
-  ]
-}
+  {
+    "name": "Slick Slider",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "slick_slider_title",
+        "label": "Title",
+        "default": "Slider title"
+      },
+      {
+        "type": "textarea",
+        "id": "slick_slider_subtitle",
+        "label": "Subtitle",
+        "default": "Slider Subtitle"
+      },
+      {
+        "type": "range",
+        "id": "slider_items_desktop",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "label": "Show slide on desktop",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "slider_items_mobile",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "label": "Show slide on mobile",
+        "default": 1
+      }, {
+        "type": "range",
+        "id": "slides_to_scroll",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "label": "Slides To Scroll",
+        "default": 1
+      }, {
+        "type": "checkbox",
+        "id": "show_slider_dots",
+        "label": "Show dots",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "slider_infinite",
+        "label": "Infinite",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "slider_autoplay",
+        "label": "Autoplay",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Slick Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slick Slider"
+      }
+    ]
+  }
 {% endschema %}
