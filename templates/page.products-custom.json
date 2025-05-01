@@ -24,7 +24,7 @@
         "heading_E3MaQJ": {
           "type": "heading",
           "settings": {
-            "heading": "Elemets",
+            "heading": "Elements",
             "heading_size": "h1"
           }
         },
@@ -94,6 +94,7 @@
         "text_CWz9h7",
         "button_GngnMW"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
@@ -102,6 +103,62 @@
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "multicolumn_dAiCkw": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_J6PbM4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_from_2025-05-01_14-44-26.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_HArjHz": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_TYrfbG": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_J6PbM4",
+        "column_HArjHz",
+        "column_TYrfbG"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Section With Slick Slider",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 1,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "slick_slider_bfJUzg": {
@@ -162,6 +219,7 @@
     "main",
     "rich_text_xchHyt",
     "rich_text_9rGWb6",
+    "multicolumn_dAiCkw",
     "slick_slider_bfJUzg"
   ]
 }
