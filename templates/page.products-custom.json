@@ -146,7 +146,16 @@
         "product_WL6RtK"
       ],
       "name": "Slick Slider",
-      "settings": {}
+      "settings": {
+        "slick_slider_title": "New Slider title",
+        "slick_slider_subtitle": "New Slider Subtitle",
+        "slider_items_desktop": 4,
+        "slider_items_mobile": 1,
+        "slides_to_scroll": 1,
+        "show_slider_dots": false,
+        "slider_infinite": true,
+        "slider_autoplay": false
+      }
     }
   },
   "order": [
