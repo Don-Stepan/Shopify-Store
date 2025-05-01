@@ -28,11 +28,10 @@
   </div>
 {% endif %}
 
-
 <script>
-  document.addEventListener('DomContentLoaded', function() {
-    $('#shopify-section-{{section.id}} .product-custom-slider__slider').slick();
-  })
+  $(document).ready(function() {
+    $('#shopify-section-{{ section.id }} .product-custom-slider__slider').slick();
+  });
 </script>
 
 
