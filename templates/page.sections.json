@@ -212,7 +212,7 @@
         "show_slider_dots": false,
         "slider_infinite": true,
         "slider_autoplay": false,
-        "show_add_to_cart_button": false,
+        "show_add_to_cart_button": true,
         "type_add_to_cart_button": "default"
       }
     }
