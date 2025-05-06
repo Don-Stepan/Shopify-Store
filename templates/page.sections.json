@@ -219,6 +219,18 @@
     "slick_slider_yXh37f": {
       "type": "slick-slider",
       "blocks": {
+        "product_qb9bVA": {
+          "type": "product",
+          "settings": {
+            "product": "example-jeans-copy"
+          }
+        },
+        "product_J6kBDP": {
+          "type": "product",
+          "settings": {
+            "product": "example-beanie-copy"
+          }
+        },
         "product_VGFwnP": {
           "type": "product",
           "settings": {
@@ -239,6 +251,8 @@
         }
       },
       "block_order": [
+        "product_qb9bVA",
+        "product_J6kBDP",
         "product_VGFwnP",
         "product_hW4ByH",
         "product_Lfx4e7"
