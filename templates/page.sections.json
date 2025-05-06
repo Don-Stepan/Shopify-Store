@@ -266,7 +266,7 @@
       ],
       "name": "Slick Slider",
       "settings": {
-        "slick_slider_title": "Slider title",
+        "slick_slider_title": "Slider with default button",
         "slick_slider_subtitle": "Slider Subtitle",
         "slider_items_desktop": 4,
         "slider_items_mobile": 1,
