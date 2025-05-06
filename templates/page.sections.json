@@ -215,6 +215,33 @@
         "show_add_to_cart_button": true,
         "type_add_to_cart_button": "ajax"
       }
+    },
+    "slick_slider_yXh37f": {
+      "type": "slick-slider",
+      "blocks": {
+        "product_Lfx4e7": {
+          "type": "product",
+          "settings": {
+            "product": "example-hat"
+          }
+        }
+      },
+      "block_order": [
+        "product_Lfx4e7"
+      ],
+      "name": "Slick Slider",
+      "settings": {
+        "slick_slider_title": "Slider title",
+        "slick_slider_subtitle": "Slider Subtitle",
+        "slider_items_desktop": 4,
+        "slider_items_mobile": 1,
+        "slides_to_scroll": 1,
+        "show_slider_dots": false,
+        "slider_infinite": false,
+        "slider_autoplay": false,
+        "show_add_to_cart_button": true,
+        "type_add_to_cart_button": "default"
+      }
     }
   },
   "order": [
@@ -222,6 +249,7 @@
     "rich_text_xchHyt",
     "rich_text_9rGWb6",
     "multicolumn_dAiCkw",
-    "slick_slider_bfJUzg"
+    "slick_slider_bfJUzg",
+    "slick_slider_yXh37f"
   ]
 }
