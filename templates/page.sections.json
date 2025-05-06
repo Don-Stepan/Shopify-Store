@@ -267,7 +267,7 @@
       "name": "Slick Slider",
       "settings": {
         "slick_slider_title": "Slider with default button",
-        "slick_slider_subtitle": "Slider Subtitle",
+        "slick_slider_subtitle": "Without choosing a size",
         "slider_items_desktop": 4,
         "slider_items_mobile": 1,
         "slides_to_scroll": 1,
