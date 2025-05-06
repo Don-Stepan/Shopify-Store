@@ -219,6 +219,12 @@
     "slick_slider_yXh37f": {
       "type": "slick-slider",
       "blocks": {
+        "product_Gb7PTA": {
+          "type": "product",
+          "settings": {
+            "product": "example-t-shirt-copy"
+          }
+        },
         "product_qb9bVA": {
           "type": "product",
           "settings": {
@@ -251,6 +257,7 @@
         }
       },
       "block_order": [
+        "product_Gb7PTA",
         "product_qb9bVA",
         "product_J6kBDP",
         "product_VGFwnP",
