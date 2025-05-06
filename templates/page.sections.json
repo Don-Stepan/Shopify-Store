@@ -219,6 +219,12 @@
     "slick_slider_yXh37f": {
       "type": "slick-slider",
       "blocks": {
+        "product_VGFwnP": {
+          "type": "product",
+          "settings": {
+            "product": "example-shirt"
+          }
+        },
         "product_hW4ByH": {
           "type": "product",
           "settings": {
@@ -233,6 +239,7 @@
         }
       },
       "block_order": [
+        "product_VGFwnP",
         "product_hW4ByH",
         "product_Lfx4e7"
       ],
