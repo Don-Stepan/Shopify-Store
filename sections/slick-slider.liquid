@@ -103,7 +103,6 @@
                       > 
                         Add To Cart (Ajax)
                       </button>
-                      <div class="add-to-cart-message" style="display: none;">✔ Added!</div>
                     {% endif %}
                   </div>
                 {% endif %}
@@ -148,16 +147,15 @@
       });
     }
 
-    const productCards = document.querySelectorAll(".product-slide");
+    const productCards = document.querySelectorAll("#shopify-section-{{ section.id }} .product-slide");
 
     productCards.forEach(card => {
       const ajaxButton = card.querySelector('.ajax-add-to-cart');
       if (ajaxButton) {
-        const button = card.querySelector(".ajax-add-to-cart");
         const select = card.querySelector(".variant-select");
-        const message = card.querySelector(".add-to-cart-message");
 
-        button.addEventListener("click", function () {
+        ajaxButton.addEventListener("click", function () {
+
           const variantId = select.value;
 
           fetch("/cart/add.js", {
@@ -176,17 +174,29 @@
             return res.json();
           })
           .then(data => {
-            if (button) {
-              const originalText = button.textContent;
-            
-              button.textContent = "✔ Added!";
-            
-              setTimeout(() => {
-                button.textContent = originalText;
-              }, 2000);
-            }
+            const originalText = ajaxButton.textContent;
+          
+            ajaxButton.textContent = "✔ Added!";
+          
+            setTimeout(() => {
+              ajaxButton.textContent = originalText;
+            }, 2000);
 
-            updateCartCount();
+            fetch('/cart.js')
+              .then(res => res.json())
+              .then(data => {         
+                const cartBubble = document.getElementById('cart-icon-bubble');
+                if (cartBubble) {
+                  cartBubble.innerHTML = `
+                    <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+                    <span class="visually-hidden">Cart</span>
+                    <div class="cart-count-bubble">
+                      <span aria-hidden="true">${data.item_count}</span>
+                      <span class="visually-hidden">${data.item_count} Items</span>
+                    </div>
+                  `;
+                }
+              });
           })
           .catch(err => {
             console.error("❌ Failed to add:", err);
@@ -194,24 +204,6 @@
         });
       }
     });
-
-    function updateCartCount() {
-      fetch('/cart.js')
-        .then(res => res.json())
-        .then(data => {         
-          const cartBubble = document.getElementById('cart-icon-bubble');
-          if (cartBubble) {
-            cartBubble.innerHTML = `
-              <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-              <span class="visually-hidden">Cart</span>
-              <div class="cart-count-bubble">
-                <span aria-hidden="true">${data.item_count}</span>
-                <span class="visually-hidden">${data.item_count} Items</span>
-              </div>
-            `;
-          }
-        });
-    }  
   });
 </script>
 
