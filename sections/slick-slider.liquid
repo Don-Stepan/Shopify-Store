@@ -19,7 +19,7 @@
         {% for block in section.blocks %}
           {% if block.settings.product != blank %}
             {% assign product = block.settings.product %}
-            <div class="product-custom-slider__item">
+            <div class="product-custom-slider__item product-slide">
               <a href="{{product.url}}">
                 <img 
                   src="{{product.featured_image | image_url: width: 300}}" 
@@ -30,12 +30,11 @@
                 <h3>{{ product.title }}</h3>
                 <p class="text">{{ product.description | truncate: 100, '...' }}</p>
                 <p class="price">{{ product.price | money }}</p>
-
+              </a>
                 {% if section.settings.show_add_to_cart_button %}
                   <div class="product-custom-slider__actions">
 
                     {% if section.settings.type_add_to_cart_button == 'default' %}
-                      123
                       {% assign product_form_id = 'quick-add-' | append: section_id | append: product.id %}
                       <product-form data-section-id="{{ section.id }}">
                         {%- form 'product',
@@ -88,9 +87,26 @@
                       </product-form>
                     {% endif %}
 
+                    {% if section.settings.type_add_to_cart_button == 'ajax' %}
+                      {% if product.variants.size > 1 %}
+                        <select class="variant-select">
+                          {% for variant in product.variants %}
+                            <option value="{{ variant.id }}">{{ variant.title }}</option>
+                          {% endfor %}
+                        </select>
+                      {% else %}
+                        <input type="hidden" class="variant-select" value="{{ product.variants.first.id }}">
+                      {% endif %}
+                      <button 
+                        class="ajax-add-to-cart button button--full-width button--primary"
+                        data-ajax-add="{{ product.selected_or_first_available_variant.id }}"
+                      > 
+                        Add To Cart (Ajax)
+                      </button>
+                      <div class="add-to-cart-message" style="display: none;">✔ Added!</div>
+                    {% endif %}
                   </div>
                 {% endif %}
-              </a>
             </div>
           {% endif %}
         {% endfor %}
@@ -98,7 +114,6 @@
     </div>
   </div>
 {% endif %}
-
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -132,6 +147,70 @@
         ]
       });
     }
+
+    {% if section.settings.show_add_to_cart_button == 'ajax' %}
+      const productCards = document.querySelectorAll(".product-slide");
+      productCards.forEach(card => {
+        const button = card.querySelector(".ajax-add-to-cart");
+        const select = card.querySelector(".variant-select");
+        const message = card.querySelector(".add-to-cart-message");
+
+        button.addEventListener("click", function () {
+          const variantId = select.value;
+
+          fetch("/cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              id: variantId,
+              quantity: 1
+            })
+          })
+          .then(res => {
+            if (!res.ok) throw new Error("Network error");
+            return res.json();
+          })
+          .then(data => {
+            if (button) {
+              const originalText = button.textContent;
+            
+              button.textContent = "✔ Added!";
+            
+              setTimeout(() => {
+                button.textContent = originalText;
+              }, 2000);
+            }
+
+            updateCartCount();
+          })
+          .catch(err => {
+            console.error("❌ Failed to add:", err);
+          });
+        });
+      });
+
+      function updateCartCount() {
+        fetch('/cart.js')
+          .then(res => res.json())
+          .then(data => {         
+            const cartBubble = document.getElementById('cart-icon-bubble');
+            if (cartBubble) {
+              cartBubble.innerHTML = `
+                <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+                <span class="visually-hidden">Cart</span>
+                <div class="cart-count-bubble">
+                  <span aria-hidden="true">${data.item_count}</span>
+                  <span class="visually-hidden">${data.item_count} Items</span>
+                </div>
+              `;
+            }
+          });
+      }
+    {% endif %}
+  
   });
 </script>
 
