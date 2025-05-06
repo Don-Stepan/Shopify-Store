@@ -193,6 +193,12 @@
           "settings": {
             "product": "example-t-shirt-copy"
           }
+        },
+        "product_MEiUMf": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
         }
       },
       "block_order": [
@@ -200,7 +206,8 @@
         "product_iEMhKY",
         "product_PxrkUA",
         "product_8cVzK7",
-        "product_WL6RtK"
+        "product_WL6RtK",
+        "product_MEiUMf"
       ],
       "name": "Slick Slider",
       "settings": {
@@ -272,7 +279,7 @@
         "slider_items_mobile": 1,
         "slides_to_scroll": 1,
         "show_slider_dots": false,
-        "slider_infinite": false,
+        "slider_infinite": true,
         "slider_autoplay": false,
         "show_add_to_cart_button": true,
         "type_add_to_cart_button": "default"
