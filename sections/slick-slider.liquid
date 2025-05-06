@@ -148,9 +148,11 @@
       });
     }
 
-    {% if section.settings.show_add_to_cart_button == 'ajax' %}
-      const productCards = document.querySelectorAll(".product-slide");
-      productCards.forEach(card => {
+    const productCards = document.querySelectorAll(".product-slide");
+
+    productCards.forEach(card => {
+      const ajaxButton = card.querySelector('.ajax-add-to-cart');
+      if (ajaxButton) {
         const button = card.querySelector(".ajax-add-to-cart");
         const select = card.querySelector(".variant-select");
         const message = card.querySelector(".add-to-cart-message");
@@ -190,27 +192,26 @@
             console.error("❌ Failed to add:", err);
           });
         });
-      });
-
-      function updateCartCount() {
-        fetch('/cart.js')
-          .then(res => res.json())
-          .then(data => {         
-            const cartBubble = document.getElementById('cart-icon-bubble');
-            if (cartBubble) {
-              cartBubble.innerHTML = `
-                <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-                <span class="visually-hidden">Cart</span>
-                <div class="cart-count-bubble">
-                  <span aria-hidden="true">${data.item_count}</span>
-                  <span class="visually-hidden">${data.item_count} Items</span>
-                </div>
-              `;
-            }
-          });
       }
-    {% endif %}
-  
+    });
+
+    function updateCartCount() {
+      fetch('/cart.js')
+        .then(res => res.json())
+        .then(data => {         
+          const cartBubble = document.getElementById('cart-icon-bubble');
+          if (cartBubble) {
+            cartBubble.innerHTML = `
+              <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+              <span class="visually-hidden">Cart</span>
+              <div class="cart-count-bubble">
+                <span aria-hidden="true">${data.item_count}</span>
+                <span class="visually-hidden">${data.item_count} Items</span>
+              </div>
+            `;
+          }
+        });
+    }  
   });
 </script>
 
