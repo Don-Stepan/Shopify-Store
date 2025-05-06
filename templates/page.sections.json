@@ -213,7 +213,7 @@
         "slider_infinite": true,
         "slider_autoplay": false,
         "show_add_to_cart_button": true,
-        "type_add_to_cart_button": "default"
+        "type_add_to_cart_button": "ajax"
       }
     }
   },
