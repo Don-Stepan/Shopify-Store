@@ -204,7 +204,7 @@
       ],
       "name": "Slick Slider",
       "settings": {
-        "slick_slider_title": "New Slider title",
+        "slick_slider_title": "Slider with Ajax Add To Cart button",
         "slick_slider_subtitle": "New Slider Subtitle",
         "slider_items_desktop": 4,
         "slider_items_mobile": 1,
