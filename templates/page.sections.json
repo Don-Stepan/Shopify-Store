@@ -204,7 +204,7 @@
       ],
       "name": "Slick Slider",
       "settings": {
-        "slick_slider_title": "New Slider title",
+        "slick_slider_title": "Slider with Ajax Add To Cart button",
         "slick_slider_subtitle": "New Slider Subtitle",
         "slider_items_desktop": 4,
         "slider_items_mobile": 1,
@@ -215,6 +215,68 @@
         "show_add_to_cart_button": true,
         "type_add_to_cart_button": "ajax"
       }
+    },
+    "slick_slider_yXh37f": {
+      "type": "slick-slider",
+      "blocks": {
+        "product_Gb7PTA": {
+          "type": "product",
+          "settings": {
+            "product": "example-t-shirt-copy"
+          }
+        },
+        "product_qb9bVA": {
+          "type": "product",
+          "settings": {
+            "product": "example-jeans-copy"
+          }
+        },
+        "product_J6kBDP": {
+          "type": "product",
+          "settings": {
+            "product": "example-beanie-copy"
+          }
+        },
+        "product_VGFwnP": {
+          "type": "product",
+          "settings": {
+            "product": "example-shirt"
+          }
+        },
+        "product_hW4ByH": {
+          "type": "product",
+          "settings": {
+            "product": "example-pants"
+          }
+        },
+        "product_Lfx4e7": {
+          "type": "product",
+          "settings": {
+            "product": "example-hat"
+          }
+        }
+      },
+      "block_order": [
+        "product_Gb7PTA",
+        "product_qb9bVA",
+        "product_J6kBDP",
+        "product_VGFwnP",
+        "product_hW4ByH",
+        "product_Lfx4e7"
+      ],
+      "name": "Slick Slider",
+      "settings": {
+        "slick_slider_title": "Slider with default button",
+        "slick_slider_subtitle": "Slider Subtitle",
+        "slider_items_desktop": 4,
+        "slider_items_mobile": 1,
+        "slides_to_scroll": 1,
+        "show_slider_dots": false,
+        "slider_infinite": false,
+        "slider_autoplay": false,
+        "show_add_to_cart_button": true,
+        "type_add_to_cart_button": "default"
+      }
     }
   },
   "order": [
@@ -222,6 +284,7 @@
     "rich_text_xchHyt",
     "rich_text_9rGWb6",
     "multicolumn_dAiCkw",
-    "slick_slider_bfJUzg"
+    "slick_slider_bfJUzg",
+    "slick_slider_yXh37f"
   ]
 }
