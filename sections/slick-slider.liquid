@@ -1,6 +1,7 @@
 {{ 'slick.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'jquery-3.7.1.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {% if section.blocks.size > 0 %}
   <div class="product-custom-slider">
@@ -18,13 +19,93 @@
         {% for block in section.blocks %}
           {% if block.settings.product != blank %}
             {% assign product = block.settings.product %}
-            <div class="product-custom-slider__item">
+            <div class="product-custom-slider__item product-slide">
               <a href="{{product.url}}">
-                <img src="{{product.featured_image | image_url: width: 300}}" alt="{{product.featured_image.alt | default: product.title }}">
+                <img 
+                  src="{{product.featured_image | image_url: width: 300}}" 
+                  alt="{{product.featured_image.alt | default: product.title }}"
+                  width="auto"
+                  height="auto"
+                >
                 <h3>{{ product.title }}</h3>
                 <p class="text">{{ product.description | truncate: 100, '...' }}</p>
                 <p class="price">{{ product.price | money }}</p>
               </a>
+                {% if section.settings.show_add_to_cart_button %}
+                  <div class="product-custom-slider__actions">
+
+                    {% if section.settings.type_add_to_cart_button == 'default' %}
+                      {% assign product_form_id = 'quick-add-' | append: section_id | append: product.id %}
+                      <product-form data-section-id="{{ section.id }}">
+                        {%- form 'product',
+                          product,
+                          id: product_form_id,
+                          class: 'form',
+                          novalidate: 'novalidate',
+                          data-type: 'add-to-cart-form'
+                        -%}
+                          <input
+                            type="hidden"
+                            name="id"
+                            value="{{ product.selected_or_first_available_variant.id }}"
+                            class="product-variant-id"
+                            {% if product.selected_or_first_available_variant.available == false %}
+                              disabled
+                            {% endif %}
+                          >
+                          <button
+                            id="{{ product_form_id }}-submit"
+                            type="submit"
+                            name="add"
+                            class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                            aria-haspopup="dialog"
+                            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                            aria-live="polite"
+                            data-sold-out-message="true"
+                            {% if product.selected_or_first_available_variant.available == false %}
+                              disabled
+                            {% endif %}
+                          >
+                            <span>
+                              {%- if product.selected_or_first_available_variant.available -%}
+                                {{ 'products.product.add_to_cart' | t }}
+                              {%- else -%}
+                                {{ 'products.product.sold_out' | t }}
+                              {%- endif -%}
+                            </span>
+                            <span class="sold-out-message hidden">
+                              {{ 'products.product.sold_out' | t }}
+                            </span>
+                            {%- if horizontal_quick_add -%}
+                              <span class="icon-wrap">
+                                {{- 'icon-plus.svg' | inline_asset_content -}}
+                              </span>
+                            {%- endif -%}
+                            {%- render 'loading-spinner' -%}
+                          </button>
+                        {%- endform -%}
+                      </product-form>
+                    {% endif %}
+
+                    {% if section.settings.type_add_to_cart_button == 'ajax' %}
+                      {% if product.variants.size > 1 %}
+                        <select class="variant-select">
+                          {% for variant in product.variants %}
+                            <option value="{{ variant.id }}">{{ variant.title }}</option>
+                          {% endfor %}
+                        </select>
+                      {% else %}
+                        <input type="hidden" class="variant-select" value="{{ product.variants.first.id }}">
+                      {% endif %}
+                      <button 
+                        class="ajax-add-to-cart button button--full-width button--primary"
+                        data-ajax-add="{{ product.selected_or_first_available_variant.id }}"
+                      > 
+                        Add To Cart (Ajax)
+                      </button>
+                    {% endif %}
+                  </div>
+                {% endif %}
             </div>
           {% endif %}
         {% endfor %}
@@ -32,7 +113,6 @@
     </div>
   </div>
 {% endif %}
-
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -66,9 +146,66 @@
         ]
       });
     }
+
+    const productCards = document.querySelectorAll("#shopify-section-{{ section.id }} .product-slide");
+
+    productCards.forEach(card => {
+      const ajaxButton = card.querySelector('.ajax-add-to-cart');
+      if (ajaxButton) {
+        const select = card.querySelector(".variant-select");
+
+        ajaxButton.addEventListener("click", function () {
+
+          const variantId = select.value;
+
+          fetch("/cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              id: variantId,
+              quantity: 1
+            })
+          })
+          .then(res => {
+            if (!res.ok) throw new Error("Network error");
+            return res.json();
+          })
+          .then(data => {
+            const originalText = ajaxButton.textContent;
+          
+            ajaxButton.textContent = "✔ Added!";
+          
+            setTimeout(() => {
+              ajaxButton.textContent = originalText;
+            }, 2000);
+
+            fetch('/cart.js')
+              .then(res => res.json())
+              .then(data => {         
+                const cartBubble = document.getElementById('cart-icon-bubble');
+                if (cartBubble) {
+                  cartBubble.innerHTML = `
+                    <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+                    <span class="visually-hidden">Cart</span>
+                    <div class="cart-count-bubble">
+                      <span aria-hidden="true">${data.item_count}</span>
+                      <span class="visually-hidden">${data.item_count} Items</span>
+                    </div>
+                  `;
+                }
+              });
+          })
+          .catch(err => {
+            console.error("❌ Failed to add:", err);
+          });
+        });
+      }
+    });
   });
 </script>
-
 
 {% schema %}
   {
@@ -128,6 +265,26 @@
         "id": "slider_autoplay",
         "label": "Autoplay",
         "default": false
+      },{
+        "type": "checkbox",
+        "id": "show_add_to_cart_button",
+        "label": "Show Add To Cart button",
+        "default": true
+      }, {
+        "type": "radio",
+        "id": "type_add_to_cart_button",
+        "label": "Type Add Button",
+        "options": [
+          {
+            "value": "ajax",
+            "label": "Ajax"
+          },
+          {
+            "value": "default",
+            "label": "Default"
+          }
+        ],
+        "default": "default"
       }
     ],
     "blocks": [

@@ -111,7 +111,7 @@
         "column_J6PbM4": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_from_2025-05-01_14-44-26.png",
+            "image": "shopify://shop_images/photo_2025-05-06_13-03-51.jpg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -193,6 +193,12 @@
           "settings": {
             "product": "example-t-shirt-copy"
           }
+        },
+        "product_MEiUMf": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
         }
       },
       "block_order": [
@@ -200,18 +206,83 @@
         "product_iEMhKY",
         "product_PxrkUA",
         "product_8cVzK7",
-        "product_WL6RtK"
+        "product_WL6RtK",
+        "product_MEiUMf"
       ],
       "name": "Slick Slider",
       "settings": {
-        "slick_slider_title": "New Slider title",
-        "slick_slider_subtitle": "New Slider Subtitle",
+        "slick_slider_title": "Slider with Ajax Add To Cart button",
+        "slick_slider_subtitle": "Added selector for choosing size",
         "slider_items_desktop": 4,
         "slider_items_mobile": 1,
         "slides_to_scroll": 1,
         "show_slider_dots": false,
         "slider_infinite": true,
-        "slider_autoplay": false
+        "slider_autoplay": false,
+        "show_add_to_cart_button": true,
+        "type_add_to_cart_button": "ajax"
+      }
+    },
+    "slick_slider_yXh37f": {
+      "type": "slick-slider",
+      "blocks": {
+        "product_Gb7PTA": {
+          "type": "product",
+          "settings": {
+            "product": "example-t-shirt-copy"
+          }
+        },
+        "product_qb9bVA": {
+          "type": "product",
+          "settings": {
+            "product": "example-jeans-copy"
+          }
+        },
+        "product_J6kBDP": {
+          "type": "product",
+          "settings": {
+            "product": "example-beanie-copy"
+          }
+        },
+        "product_VGFwnP": {
+          "type": "product",
+          "settings": {
+            "product": "example-shirt"
+          }
+        },
+        "product_hW4ByH": {
+          "type": "product",
+          "settings": {
+            "product": "example-pants"
+          }
+        },
+        "product_Lfx4e7": {
+          "type": "product",
+          "settings": {
+            "product": "example-hat"
+          }
+        }
+      },
+      "block_order": [
+        "product_Gb7PTA",
+        "product_qb9bVA",
+        "product_J6kBDP",
+        "product_VGFwnP",
+        "product_hW4ByH",
+        "product_Lfx4e7"
+      ],
+      "name": "Slick Slider",
+      "settings": {
+        "slick_slider_title": "Slider with default button",
+        "slick_slider_subtitle": "Without choosing a size",
+        "slider_items_desktop": 4,
+        "slider_items_mobile": 1,
+        "slides_to_scroll": 1,
+        "show_slider_dots": false,
+        "slider_infinite": true,
+        "slider_autoplay": false,
+        "show_add_to_cart_button": true,
+        "type_add_to_cart_button": "default"
       }
     }
   },
@@ -220,6 +291,7 @@
     "rich_text_xchHyt",
     "rich_text_9rGWb6",
     "multicolumn_dAiCkw",
-    "slick_slider_bfJUzg"
+    "slick_slider_bfJUzg",
+    "slick_slider_yXh37f"
   ]
 }
