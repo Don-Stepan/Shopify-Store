@@ -219,6 +219,12 @@
     "slick_slider_yXh37f": {
       "type": "slick-slider",
       "blocks": {
+        "product_hW4ByH": {
+          "type": "product",
+          "settings": {
+            "product": "example-pants"
+          }
+        },
         "product_Lfx4e7": {
           "type": "product",
           "settings": {
@@ -227,6 +233,7 @@
         }
       },
       "block_order": [
+        "product_hW4ByH",
         "product_Lfx4e7"
       ],
       "name": "Slick Slider",
