@@ -101,14 +101,14 @@
         "heading_gGWRAQ": {
           "type": "heading",
           "settings": {
-            "heading": "Explore the sections that feature the products",
+            "heading": "Sliders",
             "heading_size": "h2"
           }
         },
         "text_DLGeh8": {
           "type": "text",
           "settings": {
-            "text": "<p>Featured product, Featured collection, Product recommendations, Product grid / collection list, Product slideshow / carousel, Recently viewed products, Product tabs, Product video, Product badges, Countdown timers, Bundles / Upsell sections, Custom swatches, Quick Add to Cart, Dynamic Upsell</p>",
+            "text": "<p>This page contains two sliders with different add-to-cart buttons. One uses the default add-to-cart method, while the other uses AJAX.</p>",
             "text_style": "body"
           }
         },
