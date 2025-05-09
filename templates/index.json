@@ -116,7 +116,7 @@
           "type": "button",
           "settings": {
             "button_label": "View More",
-            "button_link": "shopify://pages/sections",
+            "button_link": "shopify://pages/slider",
             "button_style_secondary": false
           }
         }
