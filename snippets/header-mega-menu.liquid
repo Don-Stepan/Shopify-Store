@@ -35,7 +35,7 @@
                   role="list"
                 >
                   {%- for childlink in link.links -%}
-                    <li>
+                    <li class="js-menu-level1-links">
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
@@ -67,6 +67,16 @@
                     </li>
                   {%- endfor -%}
                 </ul>
+
+                {% if section.settings.image_with_text_image_for_menu != blank %}
+                  <img 
+                    src="{{ section.settings.image_with_text_image_for_menu | image_url: width: 300}}" 
+                    alt="{{section.settings.image_with_text_image_for_menu.alt | default: product.title }}"
+                    width="auto"
+                    height="auto"
+                  >
+                {% endif %}
+
               </div>
             </details>
           </header-menu>
@@ -92,3 +102,30 @@
     {%- endfor -%}
   </ul>
 </nav>
+
+<script>
+  {% comment %} js-menu-level1-links   {% endcomment %}
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.jQuery) {
+
+      $('.js-menu-level1-links').each(function() {
+        const item = $(this);
+      
+        item.on('click', function (e) {
+          {% comment %} console.log($(item[0]).find('ul').length) {% endcomment %}
+          if ($(item[0]).find('ul').length > 0) {
+            e.preventDefault();
+            $('.js-menu-level1-links').removeClass('active');
+            item.addClass('active');
+          } 
+        });
+      
+        item.on('mouseleave', function () {
+          // item.removeClass('active'); // якщо потрібно
+        });
+      });
+
+      console.log()
+    }
+  });
+</script>  

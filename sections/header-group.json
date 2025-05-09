@@ -44,6 +44,7 @@
         "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
+        "image_with_text_image_for_menu": "shopify://shop_images/shopify.png",
         "color_scheme": "scheme-0bbc0532-3e31-46cb-8583-2afacf7522bd",
         "menu_color_scheme": "scheme-1",
         "enable_country_selector": true,

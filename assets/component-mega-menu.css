@@ -14,6 +14,9 @@
   position: absolute;
   right: 0;
   top: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5rem;
 }
 
 .shopify-section-header-sticky .mega-menu__content {
@@ -43,7 +46,7 @@
   position: relative;
 }
 
-.mega-menu__list li {
+.mega-menu__list > li {
   display: flex;
 }
 
@@ -55,6 +58,11 @@
   padding: 0 20px;
   height: 100%;
   border-left: 1px solid grey;
+  display: none;
+}
+
+.mega-menu__list > li > .mega-menu__link--active + .list-unstyled {
+  display: block;
 }
 
 .mega-menu__link {
