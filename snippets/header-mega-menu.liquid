@@ -64,6 +64,10 @@
                           {%- endfor -%}
                         </ul>
                       {%- endif -%}
+
+                      <span class="svg-wrapper">
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </span>
                     </li>
                   {%- endfor -%}
                 </ul>
@@ -104,28 +108,28 @@
 </nav>
 
 <script>
-  {% comment %} js-menu-level1-links   {% endcomment %}
+
   document.addEventListener('DOMContentLoaded', function() {
     if (window.jQuery) {
 
-      $('.js-menu-level1-links').each(function() {
-        const item = $(this);
-      
-        item.on('click', function (e) {
-          {% comment %} console.log($(item[0]).find('ul').length) {% endcomment %}
-          if ($(item[0]).find('ul').length > 0) {
-            e.preventDefault();
-            $('.js-menu-level1-links').removeClass('active');
-            item.addClass('active');
-          } 
-        });
-      
-        item.on('mouseleave', function () {
-          // item.removeClass('active'); // якщо потрібно
-        });
-      });
+      const menuLinksLevel1 = $('.js-menu-level1-links');
 
-      console.log()
+      menuLinksLevel1.each(function() {
+        const item = $(this);
+
+        if (item.find('ul').length > 0) {
+          item.addClass('children-list');
+
+          item.on('click', function (e) {
+            menuLinksLevel1.find('a').removeClass('mega-menu__link--active');
+            menuLinksLevel1.removeClass('active');
+            e.preventDefault();
+            item.find('a').addClass('mega-menu__link--active');
+            item.addClass('active');
+            
+          });
+        }
+      });
     }
   });
 </script>  

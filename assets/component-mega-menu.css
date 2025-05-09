@@ -50,6 +50,21 @@
   display: flex;
 }
 
+.mega-menu__list > li .svg-wrapper {
+  display: none;
+}
+
+.mega-menu__list > li.children-list .svg-wrapper {
+  display: block;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.mega-menu__list > li.children-list .svg-wrapper svg {
+  transform: rotate(-90deg);
+  height: 10px;
+}
+
 .mega-menu__list li .list-unstyled {
   width: 300px;
   position: absolute;
@@ -74,6 +89,7 @@
   text-decoration: none;
   transition: text-decoration var(--duration-short) ease;
   word-wrap: break-word;
+  flex-grow: 1;
 }
 
 .mega-menu__link--level-2 {
