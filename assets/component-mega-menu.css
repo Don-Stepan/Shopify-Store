@@ -35,10 +35,26 @@
 }
 
 .mega-menu__list {
-  display: grid;
-  gap: 1.8rem 4rem;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  display: block;
   list-style: none;
+  width: 300px;
+  margin: 0;
+  padding-right: 0;
+  position: relative;
+}
+
+.mega-menu__list li {
+  display: flex;
+}
+
+.mega-menu__list li .list-unstyled {
+  width: 300px;
+  position: absolute;
+  top: 0;
+  right: -300px;
+  padding: 0 20px;
+  height: 100%;
+  border-left: 1px solid grey;
 }
 
 .mega-menu__link {
