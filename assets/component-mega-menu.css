@@ -17,6 +17,9 @@
   display: flex;
   justify-content: space-between;
   padding-right: 5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  
 }
 
 .shopify-section-header-sticky .mega-menu__content {
@@ -48,6 +51,11 @@
 
 .mega-menu__list > li {
   display: flex;
+}
+
+.mega-menu__list .mega-menu__link.current {
+  color: black;
+  font-weight: bold;
 }
 
 .mega-menu__list > li .svg-wrapper {
@@ -90,10 +98,6 @@
   transition: text-decoration var(--duration-short) ease;
   word-wrap: break-word;
   flex-grow: 1;
-}
-
-.mega-menu__link--level-2 {
-  font-weight: bold;
 }
 
 .header--top-center .mega-menu__list {

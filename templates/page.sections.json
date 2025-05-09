@@ -24,14 +24,14 @@
         "heading_E3MaQJ": {
           "type": "heading",
           "settings": {
-            "heading": "Sections",
+            "heading": "Slider",
             "heading_size": "h1"
           }
         },
         "text_LTa9ge": {
           "type": "text",
           "settings": {
-            "text": "<p>This page displays the sections I have created or updated.</p>"
+            "text": "<p>This page contains two sliders with different add-to-cart buttons. One uses the default add-to-cart method, while the other uses AJAX.</p>"
           }
         },
         "button_ci4bfR": {
