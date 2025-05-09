@@ -8,7 +8,28 @@
   "market": [],
   "order": [],
   "page": [],
-  "product": [],
+  "product": [
+    {
+      "key": "custom_field_1",
+      "namespace": "custom",
+      "name": "Custom Field 1",
+      "description": "First cutom field",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_field_2",
+      "namespace": "custom",
+      "name": "Custom field 2",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
   "variant": [],
   "shop": []
 }

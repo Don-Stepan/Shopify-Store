@@ -35,7 +35,7 @@
                   role="list"
                 >
                   {%- for childlink in link.links -%}
-                    <li>
+                    <li class="js-menu-level1-links">
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
@@ -64,9 +64,23 @@
                           {%- endfor -%}
                         </ul>
                       {%- endif -%}
+
+                      <span class="svg-wrapper">
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </span>
                     </li>
                   {%- endfor -%}
                 </ul>
+
+                {% if section.settings.image_with_text_image_for_menu != blank %}
+                  <img 
+                    src="{{ section.settings.image_with_text_image_for_menu | image_url: width: 300}}" 
+                    alt="{{section.settings.image_with_text_image_for_menu.alt | default: product.title }}"
+                    width="auto"
+                    height="auto"
+                  >
+                {% endif %}
+
               </div>
             </details>
           </header-menu>
@@ -92,3 +106,37 @@
     {%- endfor -%}
   </ul>
 </nav>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.jQuery) {
+
+      const menuLinksLevel1 = $('.js-menu-level1-links');
+
+      menuLinksLevel1.each(function() {
+        const item = $(this);
+
+        if (item.find("[aria-current='page']").length > 0) {
+          const currentPage = item.find("[aria-current='page']");
+          currentPage.addClass('current');
+          const parentLevel = currentPage.closest('.js-menu-level1-links');
+          parentLevel.find('> a').addClass('current');
+        }
+
+        if (item.find('> ul').length > 0) {
+          item.addClass('children-list');
+
+          item.find('> a').on('click', function (e) {
+            menuLinksLevel1.find('a').removeClass('mega-menu__link--active');
+            menuLinksLevel1.removeClass('active');
+            e.preventDefault();
+            item.find('> a').addClass('mega-menu__link--active');
+            item.addClass('active');
+            
+          });
+        }
+      });
+    }
+  });
+</script>  
